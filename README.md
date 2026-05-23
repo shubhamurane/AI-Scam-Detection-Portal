@@ -1,7 +1,7 @@
 # AI-Scam-Detection-Portal
 ## Project Screenshots
 
-![Home Page](Homepage.png)
+![Home Page](homepage.png)
 
 ![Detection Result](result1.png)
 
@@ -9,4 +9,4 @@
 
 ![Detection Result](result3.png)
 
-![Dashboard](dashboard.png)
+![Detection Alerts](alerts.png)
