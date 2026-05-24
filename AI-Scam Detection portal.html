@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FraudAlert - Cyber Scam Detection Portal</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#050b16;
+    color:white;
+}
+
+/* HEADER */
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    background:#08111f;
+    border-bottom:1px solid rgba(0,255,255,0.2);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo h1{
+    color:cyan;
+    font-size:35px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:15px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:cyan;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:70px 20px;
+}
+
+.hero h1{
+    color:cyan;
+    font-size:60px;
+}
+
+.hero p{
+    margin-top:20px;
+    color:#ccc;
+    font-size:20px;
+}
+
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+    padding:40px;
+}
+
+.box{
+    background:#0b1525;
+    border:1px solid rgba(0,255,255,0.2);
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 0 20px rgba(0,255,255,0.08);
+}
+
+.box h2{
+    color:cyan;
+    margin-bottom:25px;
+}
+
+/* INPUTS */
+
+textarea,
+input{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border:none;
+    border-radius:12px;
+    background:#09101c;
+    color:white;
+    font-size:16px;
+}
+
+textarea{
+    resize:none;
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(to right, cyan, #00ffd5);
+    color:black;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:20px;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.03);
+}
+
+/* RESULT */
+
+.result{
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* ALERTS */
+
+.alert{
+    background:#101c2d;
+    padding:15px;
+    border-radius:12px;
+    margin-top:15px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.red{
+    color:red;
+}
+
+.green{
+    color:lightgreen;
+}
+
+.orange{
+    color:orange;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:40px;
+}
+
+.stat-box{
+    background:#0b1525;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    border:1px solid rgba(0,255,255,0.2);
+}
+
+.stat-box h1{
+    color:cyan;
+    font-size:50px;
+}
+
+/* IMAGES */
+
+#previewImage,
+#qrPreview{
+    width:100%;
+    margin-top:20px;
+    border-radius:15px;
+    display:none;
+    max-height:300px;
+    object-fit:cover;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    margin-top:40px;
+}
+
+footer h3{
+    color:cyan;
+}
+
+/* TABLET VIEW */
+
+@media screen and (max-width:1024px){
+
+header{
+    padding:20px;
+}
+
+.hero h1{
+    font-size:48px;
+}
+
+.grid{
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    padding:25px;
+}
+
+.stats{
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    padding:25px;
+}
+
+}
+
+/* MOBILE VIEW */
+
+@media screen and (max-width:768px){
+
+header{
+    flex-direction:column;
+    text-align:center;
+    gap:15px;
+    padding:20px 15px;
+}
+
+.logo{
+    justify-content:center;
+}
+
+.logo h1{
+    font-size:28px;
+}
+
+nav{
+    width:100%;
+}
+
+nav a{
+    display:inline-block;
+    margin:8px;
+    font-size:15px;
+}
+
+.hero{
+    padding:50px 15px;
+}
+
+.hero h1{
+    font-size:34px;
+    line-height:1.3;
+}
+
+.hero p{
+    font-size:16px;
+    line-height:1.7;
+}
+
+.grid{
+    grid-template-columns:1fr;
+    padding:18px;
+    gap:18px;
+}
+
+.box{
+    padding:20px;
+    border-radius:15px;
+}
+
+.box h2{
+    font-size:22px;
+}
+
+textarea,
+input{
+    font-size:15px;
+    padding:13px;
+}
+
+button{
+    font-size:16px;
+    padding:13px;
+}
+
+.result{
+    font-size:18px;
+}
+
+.alert{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+}
+
+.stats{
+    grid-template-columns:1fr;
+    padding:18px;
+}
+
+.stat-box{
+    padding:25px;
+}
+
+.stat-box h1{
+    font-size:38px;
+}
+
+#previewImage,
+#qrPreview{
+    max-height:220px;
+}
+
+footer{
+    padding:20px;
+}
+
+footer h3{
+    font-size:20px;
+}
+
+footer p{
+    font-size:14px;
+}
+
+}
+
+/* SMALL MOBILE */
+
+@media screen and (max-width:480px){
+
+.hero h1{
+    font-size:28px;
+}
+
+.hero p{
+    font-size:15px;
+}
+
+.logo h1{
+    font-size:24px;
+}
+
+.box h2{
+    font-size:20px;
+}
+
+button{
+    font-size:15px;
+}
+
+.result{
+    font-size:16px;
+}
+
+.stat-box h1{
+    font-size:32px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<h1>🛡 FraudAlert</h1>
+</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#detector">Detector</a>
+<a href="#report">Report</a>
+<a href="#alerts">Alerts</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>AI-Based Scam Detection Portal</h1>
+
+<p>
+Detect phishing messages, fake job scams,
+UPI frauds, suspicious screenshots,
+QR scams, and cyber fraud activities.
+</p>
+
+</section>
+
+<section class="grid" id="detector">
+
+<div class="box">
+
+<h2>Scam Message Detector</h2>
+
+<textarea rows="7"
+id="scamText"
+placeholder="Paste suspicious message here..."></textarea>
+
+<button onclick="detectScam()">
+Check Scam
+</button>
+
+<div class="result" id="scamResult"></div>
+
+</div>
+
+<div class="box">
+
+<h2>Fake Link Detector</h2>
+
+<input type="text"
+id="linkInput"
+placeholder="Enter suspicious URL">
+
+<button onclick="checkLink()">
+Analyze Link
+</button>
+
+<div class="result" id="linkResult"></div>
+
+</div>
+
+<div class="box">
+
+<h2>Fake Job Detector</h2>
+
+<textarea rows="7"
+id="jobText"
+placeholder="Paste job offer message..."></textarea>
+
+<button onclick="detectJobScam()">
+Check Job Scam
+</button>
+
+<div class="result" id="jobResult"></div>
+
+</div>
+
+<div class="box">
+
+<h2>UPI Fraud Detector</h2>
+
+<textarea rows="7"
+id="upiText"
+placeholder="Describe suspicious payment activity..."></textarea>
+
+<button onclick="detectUPI()">
+Check Fraud
+</button>
+
+<div class="result" id="upiResult"></div>
+
+</div>
+
+<div class="box">
+
+<h2>Fake Payment Screenshot Detector</h2>
+
+<input type="file"
+id="paymentImage"
+accept="image/*">
+
+<img id="previewImage">
+
+<button onclick="analyzeScreenshot()">
+Analyze Screenshot
+</button>
+
+<div class="result" id="imageResult"></div>
+
+</div>
+
+<div class="box">
+
+<h2>QR Scam Detector</h2>
+
+<input type="file"
+id="qrImage"
+accept="image/*">
+
+<img id="qrPreview">
+
+<button onclick="analyzeQR()">
+Analyze QR Code
+</button>
+
+<div class="result" id="qrResult"></div>
+
+</div>
+
+</section>
+
+<section class="grid" id="report">
+
+<div class="box">
+
+<h2>Cyber Emergency Report System</h2>
+
+<input type="text"
+id="name"
+placeholder="Enter Your Name">
+
+<input type="email"
+id="email"
+placeholder="Enter Email">
+
+<textarea rows="5"
+id="reportText"
+placeholder="Describe cyber fraud..."></textarea>
+
+<button onclick="sendOTP()">
+Send OTP
+</button>
+
+<input type="text"
+id="otp"
+placeholder="Enter OTP">
+
+<button onclick="verifyOTP()">
+Verify OTP
+</button>
+
+<button onclick="submitReport()">
+Submit Report
+</button>
+
+<button onclick="downloadReport()">
+Download Complaint Report
+</button>
+
+<div class="result" id="reportResult"></div>
+
+</div>
+
+<div class="box" id="alerts">
+
+<h2>Live Cyber Alerts</h2>
+
+<div class="alert">
+<span id="alert1">⚠ Phishing attacks increasing</span>
+<span class="red" id="status1">LIVE</span>
+</div>
+
+<div class="alert">
+<span id="alert2">⚠ Fake QR payment scams</span>
+<span class="orange" id="status2">HOT</span>
+</div>
+
+<div class="alert">
+<span id="alert3">⚠ Fake job scams detected</span>
+<span class="red" id="status3">LIVE</span>
+</div>
+
+<div class="alert">
+<span id="alert4">⚠ Lottery scam messages spreading</span>
+<span class="orange" id="status4">TRENDING</span>
+</div>
+
+<div class="alert">
+<span id="alert5">✅ Banking malware blocked</span>
+<span class="green" id="status5">SAFE</span>
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat-box">
+<h1 id="phishing">95%</h1>
+<p>Phishing Scams</p>
+</div>
+
+<div class="stat-box">
+<h1 id="jobs">67%</h1>
+<p>Fake Job Frauds</p>
+</div>
+
+<div class="stat-box">
+<h1 id="upi">82%</h1>
+<p>UPI Fraud Cases</p>
+</div>
+
+<div class="stat-box">
+<h1 id="attacks">4580</h1>
+<p>Cyber Attacks Today</p>
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h3>Cyber Crime Helpline : 1930</h3>
+
+<p>Stay Aware • Stay Secure</p>
+
+<div class="footer-bottom">
+
+<p>
+© 2026 FraudAlert Portal | Developed By 
+<span class="developer-name">Shubham G. Urane</span>
+</p>
+
+</div>
+
+</footer>
+<script>
+
+/* SCAM DETECTOR */
+
+function detectScam(){
+
+let text =
+document.getElementById("scamText").value.toLowerCase();
+
+let result =
+document.getElementById("scamResult");
+
+if(text.includes("won") ||
+   text.includes("prize") ||
+   text.includes("click") ||
+   text.includes("urgent")){
+
+result.innerHTML =
+"⚠ High Scam Probability Detected";
+
+result.style.color = "red";
+
+}
+else{
+
+result.innerHTML =
+"✅ Message Looks Safe";
+
+result.style.color = "lightgreen";
+
+}
+
+}
+
+/* LINK DETECTOR */
+
+function checkLink(){
+
+let url =
+document.getElementById("linkInput").value.toLowerCase();
+
+let result =
+document.getElementById("linkResult");
+
+if(url.includes("free") ||
+   url.includes("win") ||
+   url.includes("money")){
+
+result.innerHTML =
+"⚠ Suspicious Link Detected";
+
+result.style.color = "red";
+
+}
+else{
+
+result.innerHTML =
+"✅ Link Looks Safe";
+
+result.style.color = "lightgreen";
+
+}
+
+}
+
+/* JOB DETECTOR */
+
+function detectJobScam(){
+
+let text =
+document.getElementById("jobText").value.toLowerCase();
+
+let result =
+document.getElementById("jobResult");
+
+if(text.includes("registration fee") ||
+   text.includes("earn daily") ||
+   text.includes("processing fee") ||
+   text.includes("urgent hiring")){
+
+result.innerHTML =
+"⚠ Fake Job Scam Detected";
+
+result.style.color = "red";
+
+}
+else{
+
+result.innerHTML =
+"✅ Job Offer Looks Safe";
+
+result.style.color = "lightgreen";
+
+}
+
+}
+
+/* UPI DETECTOR */
+
+function detectUPI(){
+
+let text =
+document.getElementById("upiText").value.toLowerCase();
+
+let result =
+document.getElementById("upiResult");
+
+if(text.includes("screenshot") ||
+   text.includes("pending") ||
+   text.includes("fake payment")){
+
+result.innerHTML =
+"⚠ Possible UPI Fraud Detected";
+
+result.style.color = "red";
+
+}
+else{
+
+result.innerHTML =
+"✅ Payment Activity Looks Safe";
+
+result.style.color = "lightgreen";
+
+}
+
+}
+
+/* IMAGE PREVIEW */
+
+document.getElementById("paymentImage")
+.addEventListener("change", function(event){
+
+let file = event.target.files[0];
+
+if(file){
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+document.getElementById("previewImage").src =
+e.target.result;
+
+document.getElementById("previewImage").style.display =
+"block";
+
+}
+
+reader.readAsDataURL(file);
+
+}
+
+});
+
+/* SCREENSHOT DETECTOR */
+
+function analyzeScreenshot(){
+
+let fileInput =
+document.getElementById("paymentImage");
+
+let result =
+document.getElementById("imageResult");
+
+if(fileInput.files.length == 0){
+
+result.innerHTML =
+"⚠ Please upload screenshot";
+
+result.style.color = "orange";
+
+return;
+
+}
+
+let fileName =
+fileInput.files[0].name.toLowerCase();
+
+if(fileName.includes("fake") ||
+   fileName.includes("edited") ||
+   fileName.includes("screenshot")){
+
+result.innerHTML =
+"⚠ Suspicious Payment Screenshot Detected";
+
+result.style.color = "red";
+
+}
+else{
+
+result.innerHTML =
+"✅ Screenshot Looks Genuine";
+
+result.style.color = "lightgreen";
+
+}
+
+}
+
+/* QR PREVIEW */
+
+document.getElementById("qrImage")
+.addEventListener("change", function(event){
+
+let file = event.target.files[0];
+
+if(file){
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+document.getElementById("qrPreview").src =
+e.target.result;
+
+document.getElementById("qrPreview").style.display =
+"block";
+
+}
+
+reader.readAsDataURL(file);
+
+}
+
+});
+
+/* QR DETECTOR */
+
+function analyzeQR(){
+
+let fileInput =
+document.getElementById("qrImage");
+
+let result =
+document.getElementById("qrResult");
+
+if(fileInput.files.length == 0){
+
+result.innerHTML =
+"⚠ Please upload QR image";
+
+result.style.color = "orange";
+
+return;
+
+}
+
+let fileName =
+fileInput.files[0].name.toLowerCase();
+
+if(fileName.includes("reward") ||
+   fileName.includes("free") ||
+   fileName.includes("payment") ||
+   fileName.includes("fake")){
+
+result.innerHTML =
+"⚠ Suspicious QR Scam Detected";
+
+result.style.color = "red";
+
+}
+else{
+
+result.innerHTML =
+"✅ QR Code Looks Safe";
+
+result.style.color = "lightgreen";
+
+}
+
+}
+
+/* OTP */
+
+let generatedOTP = "";
+
+function sendOTP(){
+
+generatedOTP =
+Math.floor(100000 + Math.random()*900000);
+
+alert("Demo OTP : " + generatedOTP);
+
+document.getElementById("reportResult").innerHTML =
+"✅ OTP Sent Successfully";
+
+document.getElementById("reportResult").style.color =
+"cyan";
+
+}
+
+function verifyOTP(){
+
+let otp =
+document.getElementById("otp").value;
+
+if(otp == generatedOTP){
+
+document.getElementById("reportResult").innerHTML =
+"✅ OTP Verified Successfully";
+
+document.getElementById("reportResult").style.color =
+"lightgreen";
+
+}
+else{
+
+document.getElementById("reportResult").innerHTML =
+"❌ Invalid OTP";
+
+document.getElementById("reportResult").style.color =
+"red";
+
+}
+
+}
+
+/* REPORT */
+
+function submitReport(){
+
+let reportID =
+"CYB" + Math.floor(10000 + Math.random()*90000);
+
+document.getElementById("reportResult").innerHTML =
+"✅ Report Submitted Successfully<br>Report ID : " + reportID;
+
+document.getElementById("reportResult").style.color =
+"cyan";
+
+}
+
+/* DOWNLOAD REPORT */
+
+function downloadReport(){
+
+let name =
+document.getElementById("name").value;
+
+let email =
+document.getElementById("email").value;
+
+let report =
+document.getElementById("reportText").value;
+
+if(name == "" || email == "" || report == ""){
+
+alert("Please fill all report details");
+
+return;
+
+}
+
+let reportID =
+"CYB" + Math.floor(10000 + Math.random()*90000);
+
+let reportData =
+
+"========== CYBER FRAUD REPORT ==========\n\n" +
+
+"Report ID : " + reportID + "\n\n" +
+
+"Name : " + name + "\n\n" +
+
+"Email : " + email + "\n\n" +
+
+"Complaint Details :\n" + report + "\n\n" +
+
+"Status : Submitted Successfully\n\n" +
+
+"Cyber Crime Helpline : 1930\n\n" +
+
+"Generated By FraudAlert Portal\n\n" +
+
+"Stay Aware • Stay Secure";
+
+let blob =
+new Blob([reportData], {type:"text/plain"});
+
+let link =
+document.createElement("a");
+
+link.href =
+URL.createObjectURL(blob);
+
+link.download =
+reportID + "_Complaint_Report.txt";
+
+link.click();
+
+document.getElementById("reportResult").innerHTML =
+"✅ Complaint Report Downloaded Successfully";
+
+document.getElementById("reportResult").style.color =
+"cyan";
+
+}
+
+/* LIVE STATS */
+
+let phishing = 95;
+let jobs = 67;
+let upi = 82;
+let attacks = 4580;
+
+setInterval(() => {
+
+phishing++;
+
+if(phishing > 99){
+    phishing = 95;
+}
+
+document.getElementById("phishing").innerHTML =
+phishing + "%";
+
+},3000);
+
+setInterval(() => {
+
+jobs++;
+
+if(jobs > 90){
+    jobs = 67;
+}
+
+document.getElementById("jobs").innerHTML =
+jobs + "%";
+
+},4000);
+
+setInterval(() => {
+
+upi++;
+
+if(upi > 97){
+    upi = 82;
+}
+
+document.getElementById("upi").innerHTML =
+upi + "%";
+
+},5000);
+
+setInterval(() => {
+
+attacks += Math.floor(Math.random()*20);
+
+document.getElementById("attacks").innerHTML =
+attacks;
+
+},2000);
+
+/* ALERT CHANGER */
+
+const alerts = [
+
+{
+text:"⚠ Phishing website detected",
+status:"LIVE",
+color:"red"
+},
+
+{
+text:"⚠ Fake QR payment spreading",
+status:"HOT",
+color:"orange"
+},
+
+{
+text:"⚠ UPI scam messages increasing",
+status:"ALERT",
+color:"red"
+},
+
+{
+text:"⚠ Fake lottery scam active",
+status:"TRENDING",
+color:"orange"
+},
+
+{
+text:"✅ Banking malware blocked",
+status:"SAFE",
+color:"lightgreen"
+}
+
+];
+
+function updateAlerts(){
+
+let randomAlert =
+alerts[Math.floor(Math.random()*alerts.length)];
+
+document.getElementById("alert1").innerHTML =
+randomAlert.text;
+
+document.getElementById("status1").innerHTML =
+randomAlert.status;
+
+document.getElementById("status1").style.color =
+randomAlert.color;
+
+}
+
+setInterval(updateAlerts,3000);
+
+</script>
+
+</body>
+</html>
